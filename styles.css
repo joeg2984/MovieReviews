@@ -1,0 +1,466 @@
+/* styles.css */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.visually-hidden { 
+    position: absolute; 
+    width: 1px; 
+    height: 1px; 
+    padding: 0; 
+    margin: -1px; 
+    clip: rect(0, 0, 0, 0); 
+    white-space: nowrap; 
+    border: 0; 
+}
+
+body {
+    height: 100vh; 
+    background-image: url('images/FilmFind_background.png'); 
+    background-size: cover; 
+    background-repeat: no-repeat;
+    background-position: left center; 
+    background-attachment: fixed;
+    background-color: #000000; 
+    display: flex;
+    flex-direction: column; 
+    justify-content: space-between; 
+    align-items: flex-start; 
+    font-family: Arial, sans-serif;
+    color: #ffffff;
+}
+
+
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.3); 
+    z-index: -1; 
+}
+
+footer {
+    width: 100%; 
+    text-align: center;
+    background: rgba(0, 0, 0, 0.7); 
+    padding: 10px 0;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.main-content {
+    display: flex;
+    justify-content: flex-end; 
+    align-items: center; 
+    width: 100%;
+    flex-grow: 1; 
+    padding: 20px; 
+}
+
+.flip-card {
+    background-color: rgba(255, 255, 255, 0.95); 
+    width: 100%;
+    max-width: 500px;
+    height: 600px;
+    perspective: 1000px;
+    margin: 0; 
+    border: 5px solid #444;
+    border-radius: 15px;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+    overflow: auto;
+}
+
+.flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%; 
+    transition: transform 0.6s ease; 
+    transform-style: preserve-3d;
+}
+
+.flip-card-front,
+.flip-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    overflow: auto;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.flip-card-front {
+    background-color: #fff;
+    color: black;
+}
+
+.flip-card-back {
+    background-color: #333;
+    color: white;
+    transform: rotateY(180deg);
+}
+
+.flip-card.show-back .flip-card-inner {
+    transform: rotateY(180deg);
+}
+
+#movieLookupForm {
+    width: 100%;
+}
+
+#movieLookupForm input[type="text"],
+#movieLookupForm button {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+#movieLookupForm input[type="text"] {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+#movieLookupForm button {
+    background-color: #000000;
+    color: #c60000;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease; 
+}
+
+#movieLookupForm button:hover {
+    background-color: #0088cc;
+}
+
+#movieDetails {
+    text-align: center;
+    overflow: auto;
+}
+
+#movieDetails img {
+    max-width: 100%;
+    height: auto;
+    max-height: 300px;
+    margin-bottom: 20px;
+    text-align: center;
+    overflow: auto;
+}
+
+#movieDetails h2 {
+    margin: 0 0 10px 0;
+    color: #000;
+    overflow: auto;
+}
+
+#movieDetails p {
+    margin: 5px 0;
+    color: #333;
+    overflow: auto;
+}
+
+#showTrailerButton {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #e50914;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease; 
+}
+
+#showTrailerButton:hover {
+    background-color: #bf0810;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.5);
+}
+
+.modal-content {
+    background-color: #000000;
+    margin: 10% auto;
+    padding: 20px;
+    border: 10px solid #b70000;
+    width: 80%;
+    max-width: 700px;
+    height: 10000px;
+    position: relative;
+    border-radius: 10px;
+}
+
+.close-button {
+    color: #aaa;
+    position: absolute;
+    right: 20px;
+    top: 10px;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: color 0.3s ease; 
+}
+
+.close-button:hover,
+.close-button:focus {
+    color: black;
+}
+
+.movie-item {
+    background: rgba(255, 255, 255, 0.9);
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+}
+
+.movie-item h2 {
+    color: #000;
+}
+
+.movie-item p {
+    color: #333;
+}
+
+.show-trailer-button {
+    padding: 10px;
+    background-color: #000000;
+    color: rgb(205, 0, 0);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease; 
+}
+
+.show-trailer-button:hover {
+    background-color: #1976d2;
+}
+
+
+@media (max-width: 768px) {
+
+        body {
+            background-image: url('images/FilmFind_background_mobile.png'); 
+            background-size: cover; 
+            background-repeat: no-repeat;
+            background-position: top center; 
+            background-attachment: scroll; 
+            flex-direction: column; 
+            justify-content: space-between; 
+            align-items: center;
+            padding-top: 260px; 
+
+        .main-content {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            width: 100%;
+            flex-grow: 1;
+            padding: 20px;
+        }
+        
+        .flip-card {
+            position: relative;
+            z-index: 2;
+            background-color: rgba(255, 255, 255, 0.95);
+            width: 90%;
+            max-width: 500px;
+            min-height: 400px;
+            perspective: 1000px;
+            margin: px auto;
+            border: 5px solid #444;
+            border-radius: 15px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+        }
+        
+        .flip-card-inner {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            height: 100%;
+            transition: transform 0.6s ease;
+            transform-style: preserve-3d;
+        }
+        
+        .flip-card-front,
+        .flip-card-back {
+            width: 100%;
+            backface-visibility: hidden;
+            overflow: auto;
+            padding: 20px;
+            box-sizing: border-box;
+            flex: 1 1 auto;
+        }
+        
+        .flip-card-front {
+            background-color: transparent;
+            color: black;
+        }
+        
+        .flip-card-back {
+            background-color: transparent;
+            color: white;
+            transform: rotateY(180deg);
+        }
+        
+        .flip-card.show-back .flip-card-inner {
+            transform: rotateY(180deg);
+        }
+        
+        #movieLookupForm {
+            width: 100%;
+        }
+        
+        #movieLookupForm input[type="text"],
+        #movieLookupForm button {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+        
+        #movieLookupForm input[type="text"] {
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        
+        #movieLookupForm button {
+            background-color: #000000;
+            color: #c60000;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        
+        #movieLookupForm button:hover {
+            background-color: #0088cc;
+        }
+        
+        #movieDetails {
+            text-align: center;
+        }
+        
+        #movieDetails img {
+            max-width: 100%;
+            height: auto;
+            max-height: 300px;
+            margin-bottom: 20px;
+            overflow: auto;
+        }
+        
+        #movieDetails h2 {
+            margin: 0 0 10px 0;
+            color: #000;
+            overflow: auto;
+        }
+        
+        #movieDetails p {
+            margin: 5px 0;
+            color: #333;
+            overflow: auto;
+        }
+        
+        #showTrailerButton {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #e50914;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+        
+        #showTrailerButton:hover {
+            background-color: #bf0810;
+        }
+        
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.5);
+        }
+        
+        .modal-content {
+            background-color: #fefefe;
+            margin: 10% auto;
+            padding: 20px;
+            position: relative;
+            border-radius: 10px;
+            width: 90%;
+            max-width: none;
+            height: auto;
+            max-height: 80vh;
+        }
+        
+        .close-button {
+            color: #aaa;
+            position: absolute;
+            right: 20px;
+            top: 10px;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+        
+        .close-button:hover,
+        .close-button:focus {
+            color: black;
+        }
+        
+        footer {
+            width: 100%;
+            text-align: center;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 10px 0;
+            border-radius: 5px;
+            font-size: 14px;
+            margin-top: auto;
+        }
+        
+        button:focus,
+        input:focus {
+            outline: 2px solid #00aaff;
+            outline-offset: 2px;
+        }
+        
+        #trailerContainer iframe {
+            width: 100%;
+            height: calc(100vw * 0.5625);
+            max-height: 80vh;
+        }
+        
+        .loading-spinner {
+            text-align: center;
+            color: #fff;
+            margin-top: 20px;
+        }
+    }    
+}
